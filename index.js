@@ -1,7 +1,10 @@
-function handleClick () {
-    let buttonInnerHTML = this.innerHTML;
+function buttonClick(){
+    document.querySelectorAll(".drum").addEventListener("click")
+}
 
-    switch (buttonInnerHTML) {
+function handleClick (key) {
+
+    switch (key) {
         case "w":
             let tom1 = new Audio('sounds/tom-1.mp3')
             tom1.play();
@@ -44,10 +47,18 @@ function handleClick () {
 };
 
 let btns = document.querySelectorAll(".drum");
+document.addEventListener("keypress", function(event){
+    handleClick(event.key)
+})
 
 for (let i of btns) {
-    i.addEventListener('click', handleClick)
+    i.addEventListener('click', function(){
+        let buttonInnerHTML = this.innerHTML;
+        handleClick(buttonInnerHTML);
+    })
+
 };
+
 
 
 
