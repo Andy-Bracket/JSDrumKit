@@ -1,6 +1,4 @@
-function buttonClick(){
-    document.querySelectorAll(".drum").addEventListener("click")
-}
+// Detects key press
 
 function handleClick (key) {
 
@@ -43,24 +41,32 @@ function handleClick (key) {
         default:
             console.log();
             break;
+        
     }
+
 };
 
 let btns = document.querySelectorAll(".drum");
 document.addEventListener("keypress", function(event){
     handleClick(event.key)
+    buttonAnimation(event.key);
 })
+
+// Detects Button press
 
 for (let i of btns) {
     i.addEventListener('click', function(){
         let buttonInnerHTML = this.innerHTML;
         handleClick(buttonInnerHTML);
+        buttonAnimation(buttonInnerHTML);
     })
 
 };
 
-
-
-
-// let audio = new Audio('sounds/tom-1.mp3')
-// audio.play();
+function buttonAnimation(currentKey){
+    let activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed")
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100);
+ };
