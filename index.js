@@ -63,6 +63,8 @@ for (let i of btns) {
 
 };
 
+// Button animation
+
 function buttonAnimation(currentKey){
     let activeButton = document.querySelector("." + currentKey);
     activeButton.classList.add("pressed")
